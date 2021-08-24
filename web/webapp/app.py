@@ -7,10 +7,9 @@ import pymysql.cursors
 
 app = Flask(__name__)
 
-# MySQL接続
+# MySQL接続 (mariadb)
 db = pymysql.connect(
     host = os.getenv('MYSQL_HOST'),
-    port = os.getenv('MYSQL_PORT'),
     user = os.getenv('MYSQL_USER'),
     password = os.getenv('MYSQL_PASSWORD'),
     charset = 'utf8mb4',
@@ -51,7 +50,8 @@ def api():
     if request.method == 'POST':
         name = request.json['name']
         age = request.json['age']
-        cursor.execute('INSERT INTO users (name, age) VALUES (%s %s)', (name, age))
+        cursor.execute('INSERT INTO users (name, age) VALUES (%s, %s)', (name, age))
+        db.commit()
         
         return jsonify({
             'result': 'success',
