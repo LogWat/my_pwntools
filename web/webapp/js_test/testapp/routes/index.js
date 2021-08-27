@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
+const { route } = require('./signup');
 require('dotenv').config();
 const pass = process.env.KALI_PASS;
 
@@ -46,5 +47,7 @@ router.post('/', function(req, res, next) {
     }
   );
 });
+
+router.use('/signup', require('./signup'));
 
 module.exports = router;
