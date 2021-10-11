@@ -1,4 +1,4 @@
-# MY-POWNTOOLS
+# MY-PWNTOOLS
 ## CTF用tool群
 
 個人的にCTFで使用した(する予定)のツール保管場所 (pwn以外のジャンルも含む)
